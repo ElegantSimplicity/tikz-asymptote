@@ -1,0 +1,30 @@
+import math;        // for grid
+import geometry;    // for projection
+unitsize(1cm);
+int a=4;
+add(shift(-2,-1)*grid(a+3,a+2,magenta+.1pt+opacity(.5)));
+pair A=(0,0), B=(a,0), C=(0,a);
+pair D=(A+C)/2;
+pair E=projection(B,D)*C;
+
+picture pic1,pic2,pic3;
+
+markrightangle(pic1,B,A,C,Fill(yellow));
+markrightangle(pic1,B,E,C,Fill(yellow));
+draw(pic1,A--B--C--cycle^^B--E--C);
+
+label(pic2,Label("$4$\;cm",magenta,Rotate(C-E)),C--E);
+label(pic2,"A",A,SW);
+label(pic2,"B",B,SE);
+label(pic2,"C",C,N,Fill(white));
+label(pic2,"D",D,SW);
+label(pic2,"E",E,W,Fill(white));
+
+pen p3=dashed;
+pair F=(a,a), G=(F+B)/2; dot(G);
+pair H=projection(C,G)*B; dot(H);
+draw(pic3,B--F--C--H--cycle^^A--(C+F)/2^^F--(A+B)/2,p3);
+  
+add(pic1);add(pic2);add(pic3);
+shipout(bbox(5mm,invisible));
+  
