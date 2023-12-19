@@ -1,0 +1,24 @@
+// IQ puzzle on colored squares on a grid
+// by Le Huy Tien
+// Run on http://asymptote.ualberta.ca/
+size(6cm);
+import math;
+picture Square(pair[] M, pen p=yellow) {
+  picture pic;
+  for (int i=0; i<M.length; ++i)
+    fill(pic,box(M[i],M[i]+(1,1)),p);
+  add(pic,grid(3,3));
+  return pic;
+}
+
+real a=4;
+add(shift(-a,a) *Square(new pair[] {(0,2),(1,0)}));
+add(shift(0,a)  *Square(new pair[] {(1,1),(1,2)}));
+add(shift(a,a)  *Square(new pair[] {(1,2),(2,2)}));
+add(shift(-a,0) *Square(new pair[] {(0,0),(0,2),(1,2)}));
+add(Square(new pair[] {(1,1),(1,2),(2,2)}));
+add(shift(a,0)  *Square(new pair[] {(0,2),(2,2)}));
+add(shift(-a,-a)*Square(new pair[] {(0,2),(1,0),(1,1),(1,2)}));
+add(shift(0,-a) *Square(new pair[] {(1,1),(1,2),(2,2)}));
+label(scale(3)*"?",(a,-a)+(1.5,1.5));
+shipout(bbox(5mm,invisible));
