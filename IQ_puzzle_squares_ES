@@ -1,3 +1,33 @@
+// http://asymptote.ualberta.ca/
+// an IQ puzzle: find the missing pattern (?)
+// SWpoint = south west point of a small picute
+// p = color of colored small boxes
+// M = list of colored small boxes
+size(6cm);
+import math;
+
+void Square(pair SWpoint, pen p=cyan ... pair[] M) {
+    picture pic;
+    for (int i=0; i<M.length; ++i)
+        fill(pic,box(M[i],M[i]+(1,1)),p);
+    add(pic,grid(3,3));
+    add(shift(SWpoint)*pic);
+}
+
+real a=4;
+Square((-a,a),(0,2),(1,0));
+Square((0,a),(1,1),(1,2));
+Square((a,a),(1,2),(2,2));
+Square((-a,0),(0,0),(0,2),(1,2));
+Square((0,0),(1,1),(1,2),(2,2));
+Square((a,0),(0,2),(2,2));
+Square((-a,-a),(0,2),(1,0),(1,1),(1,2));
+Square((0,-a),(1,1),(1,2),(2,2));
+
+label(scale(3)*"?",(a,-a)+(1.5,1.5));
+shipout(bbox(5mm,invisible));
+
+/* older code
 // IQ puzzle on colored squares on a grid
 // ES version (?) by Le Huy Tien
 // Run on http://asymptote.ualberta.ca/
@@ -23,3 +53,4 @@ Square((-a,-a),new pair[] {(0,2),(1,0),(1,1),(1,2)});
 Square((0,-a), new pair[] {(1,1),(1,2),(2,2)});
 label(scale(3)*"?",(a,-a)+(1.5,1.5));
 shipout(bbox(5mm,invisible));
+*/
