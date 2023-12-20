@@ -3,6 +3,7 @@
 // SWpoint = south west point of a small picute
 // p = color of colored small boxes
 // M = list of colored small boxes
+// (see more at https://www.facebook.com/groups/TikZandAsymptote/permalink/1558089551397730/)
 size(6cm);
 import math;
 
