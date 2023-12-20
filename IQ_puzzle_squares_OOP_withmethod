@@ -1,0 +1,50 @@
+// OOP Asymptote
+// an IQ puzzle with squares grid
+// chỉ định nghĩa cấu trúc dữ liệu, CÓ định nghĩa phương thức show()
+// http://asymptote.ualberta.ca/
+
+import math;
+size(8cm);
+
+struct SquareGrid {
+    pair SWpoint=(0,0);
+    pair[] M;
+      
+    void operator init(pair SWpoint=(0,0), pair[] M=null) {
+        this.SWpoint = SWpoint;
+        this.M = M;
+    }
+
+    void show(pair SWpoint=(0,0), pair[] M=null, pen p=orange) {
+        pair SWpoint = this.SWpoint;
+        pair[] M = this.M;
+        picture pic;
+        for (int i=0; i<M.length; ++i)
+            fill(pic,box(M[i],M[i]+(1,1)),p);
+        add(pic,grid(3,3));
+        add(shift(SWpoint)*pic);
+    }
+
+}; // end of the struct SquareGrid
+
+
+real a=4;
+SquareGrid 
+pic11 = SquareGrid((-a,a),new pair[] {(0,2),(1,0)}),
+pic12 = SquareGrid((0,a),new pair[] {(1,1),(1,2)}),
+pic13 = SquareGrid((a,a),new pair[] {(1,2),(2,2)}),
+pic21 = SquareGrid((-a,0),new pair[] {(0,0),(0,2),(1,2)}),
+pic22 = SquareGrid(new pair[] {(1,1),(1,2),(2,2)}),
+pic23 = SquareGrid((a,0),new pair[] {(0,2),(2,2)}),
+pic31 = SquareGrid((-a,-a),new pair[] {(0,2),(1,0),(1,1),(1,2)}),
+pic32 = SquareGrid((0,-a),new pair[] {(1,1),(1,2),(2,2)})
+//pic33 = SquareGrid((a,-a),new pair[] {(0,2),(2,2)});
+;
+
+pic11.show(); pic12.show(); pic13.show();
+pic21.show(); pic22.show(); pic23.show();
+pic31.show(); pic32.show(); //pic33.show();
+
+label(scale(3)*"?",(a,-a)+(1.5,1.5));
+
+shipout(bbox(2mm, invisible));
