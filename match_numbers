@@ -1,0 +1,51 @@
+// Tạo hệ thống số bằng que diêm
+
+import graph;
+
+picture match_stick(pen match_body=lightyellow, 
+                    pen match_head=red) {
+    picture pic;
+    filldraw(pic, box((-.08,-.04),(.08,.95)), match_body);
+    path elliptic_arc = arc((0,0),1,-10,190)--cycle;
+    transform t = shift(0,.9) * scale(.12,.18);
+    filldraw(pic, t*elliptic_arc, match_head);
+    return pic;
+}
+
+//for (int i=0; i<9; ++i)
+picture match_number_0,match_number_1,match_number_2;
+picture match_number_3,match_number_4,match_number_5;
+picture match_number_6,match_number_7,match_number_8;
+
+add(match_number_0,shift(0,2)*rotate(-90)*match_stick());
+add(match_number_0,shift(0,1)*match_stick());
+add(match_number_0,match_stick());
+add(match_number_0,shift(1,0)*rotate(90)*match_stick());
+add(match_number_0,shift(1,1)*rotate(180)*match_stick());
+add(match_number_0,shift(1,2)*rotate(180)*match_stick());
+
+add(match_number_1,shift(0,1)*match_stick());
+add(match_number_1,match_stick());
+
+add(match_number_2,shift(1,2)*rotate(90)*match_stick());
+add(match_number_2,shift(1,1)*match_stick());
+add(match_number_2,shift(0,1)*rotate(-90)*match_stick());
+add(match_number_2,match_stick());
+add(match_number_2,shift(1,0)*rotate(90)*match_stick());
+
+add(match_number_3,shift(1,2)*rotate(90)*match_stick());
+add(match_number_3,shift(1,1)*match_stick());
+add(match_number_3,shift(1,1)*rotate(90)*match_stick());
+add(match_number_3,shift(1,0)*match_stick());
+add(match_number_3,shift(1,0)*rotate(90)*match_stick());
+
+
+
+unitsize(1cm);
+
+add(match_number_0);
+add(shift(2,0)*match_number_1);
+add(shift(3,0)*match_number_2);
+add(shift(5,0)*match_number_3);
+
+shipout(bbox(5mm,invisible));
