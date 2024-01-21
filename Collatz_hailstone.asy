@@ -1,4 +1,5 @@
 // Collatz conjecture: the hailstone graph
+// https://tex.stackexchange.com/a/707540/140722
 // Run on http://asymptote.ualberta.ca/ 
 
 struct Collatz {
